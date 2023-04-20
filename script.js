@@ -1,14 +1,22 @@
 //your code here
-let touristSpots = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
-
-touristSpots.map((element)=>{
-	let words=element.split(" ");	
-	let reducedList=words.reduce((prev,current,index)=>{
-		if(current!="The"&&current!="an"&&current!="a"){
-			return prev+" "+current;
-		}
-		return prev;
-	},"")
-	return reducedList
+let arr = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
+let updatedList = arr.map((element) => {
+    let words = element.split(" ");
+    let updatedString = words.reduce((prev, current, index) => {
+        if(current != "The" && current != "an" && current != "a"){
+            return prev + " " + current;
+        }
+        return prev;
+    }, "")
+    return updatedString;
+});
+let mp={};
+updatedList.forEach( (element, index) => {
+    mp[element] = arr[index];
+});
+updatedList.sort();
+let finalAns = updatedList.map((element) => {
+    return mp[element] ;
+    
 })
-console.log(touristSpots)
+console.log(finalAns);
