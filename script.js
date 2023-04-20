@@ -1,15 +1,14 @@
 //your code here
+let touristSpots = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
 
-function strip(article) {
-  return article.replace(/^(a |an |the )/i, '').trim();
-}
-
-const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
-
-const ul = document.querySelector('#bands');
-
-sortedBands.forEach(band => {
-  const li = document.createElement('li');
-  li.textContent = band;
-  ul.appendChild(li);
-});
+touristSpots.map((element)=>{
+	let words=element.split(" ");	
+	let reducedList=words.reduce((prev,current,index)=>{
+		if(current!="The"&&current!="an"&&current!="a"){
+			return prev+" "+current;
+		}
+		return prev;
+	},"")
+	return reducedList
+})
+console.log(touristSpots)
