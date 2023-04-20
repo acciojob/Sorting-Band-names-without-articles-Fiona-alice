@@ -1,22 +1,14 @@
 //your code here
-let arr = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
-let updatedList = arr.map((element) => {
-    let words = element.split(" ");
-    let updatedString = words.reduce((prev, current, index) => {
-        if(current != "The" && current != "an" && current != "a"){
-            return prev + " " + current;
-        }
-        return prev;
-    }, "")
-    return updatedString;
+function strip(article) {
+  return article.replace(/^(a |an |the )/i, '').trim();
+}
+
+const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
+
+const ul = document.querySelector('#bands');
+
+sortedBands.forEach(band => {
+  const li = document.createElement('li');
+  li.textContent = band;
+  ul.appendChild(li);
 });
-let mp={};
-updatedList.forEach( (element, index) => {
-    mp[element] = arr[index];
-});
-updatedList.sort();
-let finalAns = updatedList.map((element) => {
-    return mp[element] ;
-    
-})
-console.log(finalAns);
